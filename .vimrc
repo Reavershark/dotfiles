@@ -1,4 +1,12 @@
-"vim-latexsuite
+"VimPlug
+call plug#begin('~/.vim/plugged')
+    Plug 'sheerun/vim-polyglot'
+    Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
+    Plug 'dylanaraps/wal.vim'
+    Plug 'vimwiki/vimwiki'
+call plug#end()
+
+"LaTeX
 filetype plugin indent on
 set grepprg=grep\ -nH\ $*
 let g:tex_flavor = "latex"
@@ -7,18 +15,14 @@ let g:Tex_ViewRule_pdf = 'evince'
 let g:Tex_DefaultTargetFormat = 'pdf'
 let g:Tex_CompileRule_pdf = 'latexmk -c -pdf -f $*'
 set iskeyword+=:
-:set cmdheight=2
+set cmdheight=2
+"Live latex
+let g:livepreview_previewer = 'evince'
+set updatetime=1000
 
 "Omnicomplete
 "filetype plugin on
 set omnifunc=syntaxcomplete#Complete
-
-"Enable forward searches
-:let g:Tex_DefaultTargetFormat = 'pdf'
-
-"Live latex
-let g:livepreview_previewer = 'evince'
-set updatetime=1000
 
 "Line numbers
 set number relativenumber
@@ -29,10 +33,10 @@ set mouse=a
 "Clipboard
 set clipboard=unnamedplus
 
-"IgNoRe CaSe
+"Ignore case
 set ic!
 
-"wrap
+"Line wrap
 set breakindent
 set linebreak
 
@@ -46,26 +50,23 @@ set expandtab
 set ts=4
 set sw=4
 
-"NerdTree binding
-map <C-n> :NERDTreeToggle<CR>
-
 "RGB
 "colors monokai
 syntax enable
 hi Normal ctermbg=NONE
+colorscheme wal
 
 "SwapWords
+" :call SwapWords({'foo':'bar'})
 function! Mirror(dict)
     for [key, value] in items(a:dict)
         let a:dict[value] = key
     endfor
     return a:dict
 endfunction
-
 function! S(number)
     return submatch(a:number)
 endfunction
-
 function! SwapWords(dict, ...)
     let words = keys(a:dict) + values(a:dict)
     let words = map(words, 'escape(v:val, "|")')
@@ -79,14 +80,3 @@ function! SwapWords(dict, ...)
         \ . '\=' . string(Mirror(a:dict)) . '[S(0)]'
         \ . delimiter . 'g'
 endfunction
-
-"VimPlug
-call plug#begin('~/.vim/plugged')
-Plug 'sheerun/vim-polyglot'
-Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
-Plug 'scrooloose/nerdtree'
-Plug 'dylanaraps/wal.vim'
-Plug 'vimwiki/vimwiki'
-call plug#end()
-
-colorscheme wal
