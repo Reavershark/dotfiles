@@ -203,6 +203,42 @@ for_window [title="Spotify Premium"] move container to workspace 12
 #Syncthing
 exec --no-startup-id /usr/bin/syncthing-gtk -m
 
+{% if yadm.os == "jonas-desktop" %}
+    #X2X
+    bindsym $mod+shift+x exec --no-startup-id ssh jonas-laptop -Y "x2x -west -to :0"
+    
+    #Dpi
+    exec --no-startup-id xrandr --dpi 192
+    
+    #Freesync
+    exec --no-startup-id xrandr --output DisplayPort-0 --set "TearFree" auto
+{% endif %}
 
+{% if yadm.os == "jonas-laptop" %}
+    #nm-applet
+    exec --no-startup-id nm-applet
+    
+    #Sreen brightness controls
+    bindsym XF86MonBrightnessUp exec --no-startup-id light -A 5
+    bindsym XF86MonBrightnessDown exec --no-startup-id light -U 5
+    
+    #Touchpad
+    exec --no-startup-id xinput set-button-map "SynPS/2 Synaptics TouchPad" 3 2 1
+    exec --no-startup-id xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Disable While Typing Enabled" 0
+{% endif %}
 
+{% if yadm.os == "jonas-desktop" %}
+    #Discord
+    #env PULSE_LATENCY_MSEC=100
+    for_window [class="discord"] move container to workspace 11
+    exec --no-startup-id discord
+{% endif %}
 
+{% if yadm.os == "jonas-desktop" %}
+    #Rambox
+    for_window [class="Rambox"] move container to workspace 13
+{% endif %}
+{% if yadm.os == "jonas-laptop" %}
+    #Rambox
+    for_window [class="Rambox"] move container to workspace 11
+{% endif %}
