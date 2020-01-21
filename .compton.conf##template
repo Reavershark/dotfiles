@@ -1,0 +1,36 @@
+backend = "xr_glx_hybrid";
+glx-no-stencil = true;
+glx-no-rebind-pixmap = true;
+glx-swap-method = -1;
+
+vsync = "none";
+unredir-if-possible = true;
+ 
+# Shadow
+shadow = true;
+shadow-radius = 10;
+shadow-offset-x = -15;
+shadow-offset-y = -15;
+shadow-opacity = 0.5;
+
+fading = false;
+
+{% if yadm.hostname == "jonas-laptop" %}
+    blur-background = true;
+    blur-background-frame = true;
+    blur-kern = "7x7box";
+{% else %}
+    blur-background = false;
+{% endif %}
+
+inactive-dim = 0.05;
+
+wintypes:
+{
+    dnd = { shadow = false; };
+    dock = { shadow = false; };
+    tooltip = { fade = true; shadow = false; };
+    menu = { shadow = false; };
+    dropdown_menu = { shadow = false; opacity = 1; };
+    popup_menu =  { shadow = false; opacity = 1; };
+};
