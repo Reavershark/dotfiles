@@ -62,6 +62,7 @@ export EDITOR='vim'
 # Alias
 alias pss="yay -Ss"
 alias pqs="yay -Qs"
+alias fss="yay -Slq | fzf -m --preview 'yay -Si {1}'| xargs -ro yay -S"
 alias mkdir="mkdir -pv"
 alias la="ls -lA"
 alias l="ls -lAh"
