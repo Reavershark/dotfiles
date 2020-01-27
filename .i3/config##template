@@ -1,7 +1,11 @@
 #i3 config file
 
 #Modifier key
+{% if yadm.hostname == "jonas-desktop" %}
 set $mod Mod1
+{% else %}
+set $mod Mod4
+{% endif %}
 
 #Colors
 set_from_resource $fg i3wm.color7
