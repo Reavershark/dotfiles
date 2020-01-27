@@ -1,4 +1,8 @@
+{% if yadm.hostname == "jonas-desktop" %}
 backend = "xr_glx_hybrid";
+{% else %}
+backend = "glx";
+{% endif %}
 glx-no-stencil = true;
 glx-no-rebind-pixmap = true;
 glx-swap-method = -1;
