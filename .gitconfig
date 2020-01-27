@@ -12,4 +12,4 @@ autocrlf = input
 [commit]
 gpgsign = true
 [color]
-	ui = auto
+ui = auto
