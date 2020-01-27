@@ -1,1 +1,0 @@
-.zprofile##hostname.jonas-desktop
