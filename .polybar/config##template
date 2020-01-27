@@ -9,11 +9,17 @@ full 		= ${xrdb:color7}
 discharging 	= ${xrdb:color7}
 
 [bar/main_bar]
+{% if yadm.hostname == "jonas-desktop" %}
 monitor = ${env:MONITOR:DisplayPort-0}
+{% endif %}
 dpi = -1
 bottom = false
 width = 100%
+{% if yadm.hostname == "jonas-desktop" %}
 height = 40
+{% else %}
+height = 20
+{% endif %}
 offset-x = 0
 offset-y = 0
 radius = 0.0
@@ -33,7 +39,11 @@ font-1 = Source Han Sans JP:style=Normal
 font-2 = Font Awesome 5 Brands:style=Regular
 
 modules-left = i3 xwindow
+{% if yadm.hostname == "jonas-laptop" %}
+modules-right = cpu memory battery-android spotify hash date battery volume powermenu
+{% else %}
 modules-right = cpu memory battery-android spotify hash date volume powermenu
+{% endif %}
 
 tray-position = right
 tray-padding = 9
@@ -108,7 +118,12 @@ label-foreground = ${colors.darker}
 [module/hash]
 type = custom/script
 exec = echo '#'
+{% if yadm.hostname == "jonas-desktop" %}
 click-left = ~/.polybar/tearfree.sh
+{% endif %}
+{% if yadm.hostname == "jonas-laptop" %}
+click-left = ~/.polybar/compton.sh
+{% endif %}
 click-right = wineserver -kw
 
 [module/date]
