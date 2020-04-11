@@ -205,7 +205,7 @@ for_window [title="Spotify"] move container to workspace 12
 for_window [title="Spotify Premium"] move container to workspace 12
 
 #Syncthing
-exec --no-startup-id /usr/bin/syncthing-gtk -m
+#exec --no-startup-id /usr/bin/syncthing-gtk -m
 
 {% if yadm.hostname == "jonas-desktop" %}
     #X2X
