@@ -145,10 +145,10 @@ bindsym $mod+Shift+F4 move container to workspace 14
 bindsym Pause exec --no-startup-id ~/.i3/pause.sh
 
 #Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q set Master 5+
-bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q set Master 5-
-bindsym Shift+XF86AudioRaiseVolume exec --no-startup-id amixer -q set Master 1+
-bindsym Shift+XF86AudioLowerVolume exec --no-startup-id amixer -q set Master 1-
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q set Master 5%+
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q set Master 5%-
+bindsym Shift+XF86AudioRaiseVolume exec --no-startup-id amixer -q set Master 1%+
+bindsym Shift+XF86AudioLowerVolume exec --no-startup-id amixer -q set Master 1%-
 bindsym XF86AudioMute exec --no-startup-id amixer -q set Master toggle
 
 #Media control
