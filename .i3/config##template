@@ -183,6 +183,13 @@ exec --no-startup-id wal -q -i ~/Pictures/Wallpaper.* --saturate 0.6
 #Mouse
 exec --no-startup-id bash /usr/local/bin/nagastart.sh
 
+{% if yadm.hostname == "jonas-desktop" %}
+    exec --no-startup-id dbus-send --session --dest="org.razer" /org/razer/device/PM1724H00902066 razer.device.dpi.setDPI int32:3400 int32:3400
+{% endif %}
+{% if yadm.hostname == "jonas-laptop" %}
+    exec --no-startup-id dbus-send --session --dest="org.razer" /org/razer/device/PM1724H00902066 razer.device.dpi.setDPI int32:1700 int32:1700
+{% endif %}
+
 #Screen timeout
 exec --no-startup-id xset -dpms
 exec --no-startup-id xset s off
