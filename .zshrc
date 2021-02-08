@@ -33,6 +33,11 @@ fi
 
 source $ZSH/oh-my-zsh.sh
 
+# Tilix
+if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
+        source /etc/profile.d/vte.sh
+fi
+
 # Autosuggestions
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
@@ -55,6 +60,9 @@ compinit
 
 # Preferred editor
 export EDITOR='vim'
+
+# Supress wine warnings
+WINEDEBUG="fixme-all"
 
 #Hide '%'
 #unsetopt PROMPT_SP
