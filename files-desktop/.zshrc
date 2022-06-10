@@ -81,6 +81,7 @@ alias drepl="dub run drepl -q"
 alias weather="curl wttr.in/brugge --silent | head -n37"
 alias wallpaper="wal -i"
 alias proton="STEAM_COMPAT_DATA_PATH=/home/jonas/Games/Steam/steamapps/compatdata/default/ /home/jonas/.steam/steam/compatibilitytools.d/Proton-*-GE*/proton"
+alias drepl="docker run --rm -it dlanguage/drepl"
 
 # Functions
 
