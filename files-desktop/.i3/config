@@ -1,0 +1,222 @@
+# i3 config file (v4)
+
+## Global settings
+
+# Modifier key
+set $mod Mod1
+
+# Font
+font xft:monospace 10
+
+# Colors
+set_from_resource $fg i3wm.color7
+set_from_resource $bg i3wm.color0
+set_from_resource $focus i3wm.color2
+
+client.focused          $focus  $bg     $fg  $focus    $focus
+client.focused_inactive $bg     $bg     $fg  $bg       $bg
+client.unfocused        $bg     $bg     $fg  $bg       $bg
+client.urgent           $bg     $bg     $fg  $bg       $bg
+client.placeholder      $bg     $bg     $fg  $bg       $bg
+
+client.background       $bg
+
+## Window management
+
+# Kill focused window
+bindsym $mod+Shift+q kill
+
+# Fullscreen
+bindsym $mod+f fullscreen toggle
+popup_during_fullscreen smart
+
+# Mouse drag
+floating_modifier $mod
+
+# Change focus
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# Move focused window
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# Alt-Tab
+bindsym $mod+Tab focus right
+bindsym Mod1+Shift+Tab focus left
+
+# Horizontal split
+bindsym $mod+h split h
+
+# Vertical split
+bindsym $mod+v split v
+
+# Change container layout
+bindsym $mod+s layout stacking
+bindsym $mod+z layout tabbed
+bindsym $mod+e layout toggle split
+
+# Toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# Change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+## Workspaces
+
+# Switch to workspace
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+bindsym $mod+F1 workspace 11
+bindsym $mod+F2 workspace 12
+bindsym $mod+F3 workspace 13
+bindsym $mod+F4 workspace 14
+
+# Move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10
+bindsym $mod+Shift+F1 move container to workspace 11
+bindsym $mod+Shift+F2 move container to workspace 12
+bindsym $mod+Shift+F3 move container to workspace 13
+bindsym $mod+Shift+F4 move container to workspace 14
+
+# Scratchpad
+bindsym $mod+shift+r move scratchpad
+bindsym $mod+r scratchpad show; floating disable
+
+# Auto move
+for_window [class="discord"] move container to workspace 11
+#for_window [class="Spotify"] move container to workspace 12
+for_window [title="Spotify"] move container to workspace 12
+for_window [class="Rambox"] move container to workspace 13
+
+## Decoration
+
+# Disable window borders & titles
+new_window pixel 1
+new_float pixel 1
+default_border pixel 1
+
+# Gaps
+gaps inner 10
+bindsym $mod+Shift+colon gaps inner all set 10
+bindsym $mod+Shift+plus  gaps inner all plus 5
+bindsym $mod+Shift+minus gaps inner all minus 5
+
+## Keybinds
+
+# Terminal
+bindsym $mod+Return exec --no-startup-id urxvt
+bindsym $mod+Shift+Return exec --no-startup-id urxvt -e ranger
+bindsym $mod+Ctrl+Return exec --no-startup-id urxvt -e tmux new-session -A -s main
+
+# Application launcher
+bindsym $mod+d exec --no-startup-id rofi -show run
+bindsym $mod+Shift+d exec --no-startup-id rofi -show drun -show-icons
+bindsym $mod+Shift+s exec --no-startup-id rofi -show ssh
+bindsym $mod+b exec --no-startup-id ~/.i3/setbg.sh
+
+# Screenshot
+bindsym Print exec --no-startup-id ~/.i3/screenshot.sh fullscreen
+bindsym Shift+Print exec --no-startup-id ~/.i3/screenshot.sh region
+bindsym Ctrl+Print exec --no-startup-id ~/.i3/screenshot.sh objects
+
+# Audio controls
+bindsym XF86AudioRaiseVolume exec --no-startup-id pulseaudio-ctl up 5%
+bindsym XF86AudioLowerVolume exec --no-startup-id pulseaudio-ctl down 5%
+bindsym Shift+XF86AudioRaiseVolume exec --no-startup-id pulseaudio-ctl up 1%
+bindsym Shift+XF86AudioLowerVolume exec --no-startup-id pulseaudio-ctl down 1%
+bindsym XF86AudioMute exec --no-startup-id pulseaudio-ctl mute
+
+# Media control
+bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
+bindsym XF86AudioStop exec --no-startup-id playerctl pause
+bindsym XF86AudioNext exec --no-startup-id playerctl next
+bindsym XF86AudioPrev exec --no-startup-id playerctl previous
+
+
+# Pause/unpause focused window (SIGSTOP/SIGCONT)
+bindsym Pause exec --no-startup-id ~/.i3/pause.sh
+
+# Reload i3 config
+bindsym $mod+Shift+c reload
+
+# Exit i3
+bindsym $mod+Shift+e exec --no-startup-id "i3-nagbar -t warning -m 'Confirm exit' -b 'Exit i3' 'i3-msg exit'"
+
+## One-shot programs
+
+# Ramdisk
+exec --no-startup-id mkdir /dev/shm/$USER
+
+# Numlock on startup
+exec --no-startup-id "numlockx on"
+
+# No screen timeout
+exec --no-startup-id xset -dpms
+exec --no-startup-id xset s off
+
+# Faster key repeat
+exec --no-startup-id xset r rate 250 25
+
+# Mouse dpi
+set $mousedpi 2800
+exec --no-startup-id dbus-send --session --print-reply=literal --dest="org.razer" /org/razer/device/PM1724H00902066 razer.device.dpi.setDPI uint16:$mousedpi uint16:$mousedpi
+bindsym $mod+Shift+f exec --no-startup-id dbus-send --session --print-reply=literal --dest="org.razer" /org/razer/device/PM1724H00902066 razer.device.dpi.setDPI uint16:$mousedpi uint16:$mousedpi
+
+# Load Xresources
+exec --no-startup-id xrdb ~/.Xresources
+
+# PyWal
+exec --no-startup-id wal -q -t -i ~/Pictures/Wallpaper.* --saturate 0.6
+
+# XRandR dpi and Freesync
+exec --no-startup-id xrandr --dpi 192
+exec --no-startup-id xrandr --output DisplayPort-0 --set "TearFree" on
+
+
+## Autostart
+
+# Polkit
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+
+# Notifications
+exec --no-startup-id /usr/lib/xfce4/notifyd/xfce4-notifyd
+
+# Mouse macros
+exec --no-startup-id bash /usr/local/bin/nagastart.sh
+
+# Compton
+exec --no-startup-id compton -b --conf ~/.compton.conf
+
+# Polybar
+exec --no-startup-id polybar -c ~/.polybar/config main_bar
+
+# Redshift
+exec --no-startup-id redshift -l 51.2093351:3.154725
+
+# Desktop apps
+exec --no-startup-id discord
+#exec --no-startup-id env LD_PRELOAD=/usr/lib/spotify-adblock.so spotify
+exec --no-startup-id /opt/google/chrome/google-chrome --profile-directory=Default --app-id=pjibgclleladliembfgfagdaldikeohf
+
