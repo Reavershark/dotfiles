@@ -1,5 +1,5 @@
 ! Font rendering
-Xft.dpi:        180
+Xft.dpi: 180
 Xft.autohint: 0
 Xft.lcdfilter: lcddefault
 Xft.hintstyle: hintfull
@@ -46,7 +46,7 @@ Xft.rgba: rgb
 
 ! rxvt-unicode
 URxvt.intensityStyles: false
-URxvt.background: [70]#000000
+URxvt.background: [80]#000000
 URxvt.depth: 32
 URxvt.font: xft:monospace:size=22
 URxvt.letterSpace: -1

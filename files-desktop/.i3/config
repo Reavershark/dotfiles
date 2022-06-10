@@ -207,7 +207,7 @@ exec --no-startup-id /usr/lib/xfce4/notifyd/xfce4-notifyd
 exec --no-startup-id bash /usr/local/bin/nagastart.sh
 
 # Compton
-exec --no-startup-id compton -b --conf ~/.compton.conf
+exec --no-startup-id picom -b --conf ~/.picom.conf
 
 # Polybar
 exec --no-startup-id polybar -c ~/.polybar/config main_bar
@@ -218,5 +218,5 @@ exec --no-startup-id redshift -l 51.2093351:3.154725
 # Desktop apps
 exec --no-startup-id discord
 #exec --no-startup-id env LD_PRELOAD=/usr/lib/spotify-adblock.so spotify
-exec --no-startup-id /opt/google/chrome/google-chrome --profile-directory=Default --app-id=pjibgclleladliembfgfagdaldikeohf
+exec --no-startup-id /opt/google/chrome/google-chrome --profile-directory=Default --app-id=pjibgclleladliembfgfagdaldikeohf # Spotify
 

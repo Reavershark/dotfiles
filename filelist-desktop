@@ -1,7 +1,7 @@
 .i3/*
 .naga/*
 .polybar/*
-.compton.conf
+.picom.conf
 .xinitrc
 .Xresources
 Pictures/Wallpaper.png
