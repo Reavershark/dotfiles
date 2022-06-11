@@ -1,0 +1,174 @@
+[colors]
+background 	= #60000000
+foreground 	= ${xrdb:color7}
+darker		= ${xrdb:color8}
+urgent		= ${xrdb:color15}
+volume		= ${xrdb:color1}
+charging	= ${xrdb:color6}
+full 		= ${xrdb:color7}
+discharging 	= ${xrdb:color7}
+
+[bar/main_bar]
+dpi = -1
+bottom = false
+width = 100%
+height = 20
+offset-x = 0
+offset-y = 0
+radius = 0.0
+fixed-center = true
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 2
+line-color = ${colors.foreground}
+
+module-margin-left = 0
+module-margin-right = 2
+
+font-0 = sans
+font-1 = Source Han Sans JP:style=Normal
+font-2 = Font Awesome 5 Brands:style=Regular
+
+modules-left = i3 xwindow
+modules-right = cpu memory battery-android spotify hash date battery volume powermenu
+
+tray-position = right
+tray-padding = 9
+tray-offset-y = 0%
+tray-offset-x = 0%
+tray-maxsize = 100
+tray-detached = false
+
+wm-restack = i3
+
+[module/i3]
+type = internal/i3
+
+ws-icon-0 = "1;1"
+ws-icon-1 = "2;2"
+ws-icon-2 = "3;3"
+ws-icon-3 = "4;4"
+ws-icon-4 = "5;5"
+ws-icon-5 = "6;6"
+ws-icon-6 = "7;7"
+ws-icon-7 = "8;8"
+ws-icon-8 = "9;9"
+ws-icon-9 = "10;10"
+ws-icon-10 = "11;"
+ws-icon-11 = "12;"
+ws-icon-12 = "13;"
+ws-icon-13 = "14;F4"
+
+label-mode = %mode%
+label-mode-padding = 2
+
+label-focused = %icon%
+label-focused-underline = ${colors.foreground}
+label-focused-padding = 2
+
+label-unfocused = %icon%
+label-unfocused-padding = 2
+
+label-visible = %icon%
+label-visible-underline = ${colors.darker}
+label-visible-padding = 4
+
+label-urgent = %icon%
+label-urgent-underline = ${colors.urgent}
+label-urgent-padding = 2
+
+[module/xwindow]
+type = internal/xwindow
+label-active-font = 2
+label = %title:0:65:...%
+label-padding = 2
+label-foreground = ${colors.darker}
+label-maxlen = 0
+
+[module/cpu]
+type = internal/cpu
+interval = 0.5
+label-foreground = ${colors.darker}
+
+[module/memory]
+type = internal/memory
+interval = 3
+label = %gb_used%
+label-foreground = ${colors.darker}
+
+[module/battery-android]
+type = custom/script
+exec = ~/.polybar/battery-android.sh
+interval = 5
+label-foreground = ${colors.darker}
+
+[module/hash]
+type = custom/script
+exec = echo '#'
+click-left = ~/.polybar/compton.sh
+click-right = wineserver -kw
+
+[module/date]
+type = internal/date
+interval = 5
+date = "%d/%m/%Y"
+time = %H:%M
+label = %date% %time%
+
+[module/volume]
+type = internal/alsa
+master-soundcard = default
+format-volume-underline = ${colors.volume}
+
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = AC0
+full-at = 100
+
+[module/powermenu]
+type = custom/menu
+expand-right = true
+format-spacing = 1
+
+label-open = §
+label-close = C
+label-separator = |
+
+menu-0-0 = Re
+menu-0-0-exec = menu-open-1
+menu-0-1 = Po
+menu-0-1-exec = menu-open-2
+menu-0-2 = Su
+menu-0-2-exec = menu-open-3
+menu-0-3 = Hi
+menu-0-3-exec = menu-open-4
+
+menu-1-0 = Reboot
+menu-1-0-exec = systemctl reboot &
+
+menu-2-0 = Power off
+menu-2-0-exec = shutdown 0 &
+
+menu-3-0 = Suspend
+menu-3-0-exec = i3lock -i ~/Dotfiles/Wallpaper-lock.png && systemctl suspend &
+
+menu-4-0 = Hibernate
+menu-4-0-exec = i3lock -i ~/Dotfiles/Wallpaper-lock.png && systemctl hibernate &
+
+[module/spotify]
+type = custom/script
+interval = 1
+format-prefix = " "
+format = <label>
+exec = python /usr/share/polybar/scripts/spotify_status.py -p ',[Paused]' -f '{play_pause} {artist} - {song}'
+label-foreground = ${colors.darker}
+
+[settings]
+screenchange-reload = true
+
+[global/wm]
+margin-top = 5
+margin-bottom = 5

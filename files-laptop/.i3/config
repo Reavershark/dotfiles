@@ -1,0 +1,219 @@
+#i3 config file
+
+#Modifier key
+set $mod Mod4
+
+#Colors
+set_from_resource $fg i3wm.color7
+set_from_resource $bg i3wm.color0
+set_from_resource $focus i3wm.color2
+
+client.focused          $focus  $bg     $fg  $focus    $focus
+client.focused_inactive $bg     $bg     $fg  $bg       $bg
+client.unfocused        $bg     $bg     $fg  $bg       $bg
+client.urgent           $bg     $bg     $fg  $bg       $bg
+client.placeholder      $bg     $bg     $fg  $bg       $bg
+
+client.background       $bg
+
+#Use Mouse+floating_modifier to drag floating windows to their wanted position
+floating_modifier $mod
+
+#Gaps
+gaps inner 10
+bindsym $mod+Shift+plus  gaps inner all plus 5
+bindsym $mod+Shift+minus gaps inner all minus 5
+bindsym $mod+Shift+colon gaps inner all set 10
+
+#Spawn a terminal
+bindsym $mod+Return exec --no-startup-id urxvt
+bindsym $mod+Shift+Return exec --no-startup-id urxvt -e ranger
+bindsym $mod+Ctrl+Return exec --no-startup-id urxvt -e tmux new-session -A -s main
+
+#Kill focused window
+bindsym $mod+Shift+q kill
+
+#Screenshot
+bindsym Print exec --no-startup-id screenshot fullscreen
+bindsym Shift+Print exec --no-startup-id screenshot region
+bindsym Ctrl+Print exec --no-startup-id screenshot objects
+
+#Start rofi
+bindsym $mod+d exec --no-startup-id rofi -show run
+bindsym $mod+Shift+d exec --no-startup-id rofi -show drun -show-icons
+bindsym $mod+Shift+s exec --no-startup-id rofi -show ssh
+bindsym $mod+b exec --no-startup-id setbg
+
+#Lockscreen
+bindsym $mod+o exec --no-startup-id i3lock -i ~/Pictures/Wallpaper-lock.png
+
+#Reload the configuration file
+bindsym $mod+Shift+c reload
+#exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec --no-startup-id "i3-nagbar -t warning -m 'Confirm exit' -b 'Exit i3' 'i3-msg exit'"
+
+#Window management
+#Change focus
+bindsym $mod+j focus left
+bindsym $mod+k focus down
+bindsym $mod+l focus up
+bindsym $mod+m focus right
+
+#Alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+#Move focused window
+bindsym $mod+Shift+j move left
+bindsym $mod+Shift+k move down
+bindsym $mod+Shift+l move up
+bindsym $mod+Shift+m move right
+
+#Alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# Alt-Tab
+bindsym $mod+Tab focus right
+bindsym Mod1+Shift+Tab focus left
+
+#Split in horizontal orientation
+bindsym $mod+h split h
+
+#Split in vertical orientation
+bindsym $mod+v split v
+
+#Enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+#Change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+z layout tabbed
+bindsym $mod+e layout toggle split
+
+#Toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+#Change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+#Scratchpad
+bindsym $mod+shift+r move scratchpad
+bindsym $mod+r scratchpad show; floating disable
+
+#Switch to workspace
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+bindsym $mod+F1 workspace 11
+bindsym $mod+F2 workspace 12
+bindsym $mod+F3 workspace 13
+bindsym $mod+F4 workspace 14
+
+#Move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10
+bindsym $mod+Shift+F1 move container to workspace 11
+bindsym $mod+Shift+F2 move container to workspace 12
+bindsym $mod+Shift+F3 move container to workspace 13
+bindsym $mod+Shift+F4 move container to workspace 14
+
+#Pause
+bindsym Pause exec --no-startup-id ~/.i3/pause.sh
+
+#Audio controls
+bindsym XF86AudioRaiseVolume exec --no-startup-id pamixer -i 5
+bindsym XF86AudioLowerVolume exec --no-startup-id pamixer -d 5
+bindsym Shift+XF86AudioRaiseVolume exec --no-startup-id pamixer -i 1
+bindsym Shift+XF86AudioLowerVolume exec --no-startup-id pamixer -d 1
+bindsym XF86AudioMute exec --no-startup-id pamixer -t
+
+#Media control
+bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
+bindsym XF86AudioStop exec --no-startup-id playerctl pause
+bindsym XF86AudioNext exec --no-startup-id playerctl next
+bindsym XF86AudioPrev exec --no-startup-id playerctl previous
+
+#Disable window borders & titles
+new_window pixel 1
+new_float pixel 1
+default_border pixel 1
+
+#Numlock on startup
+exec --no-startup-id "numlockx on"
+
+#Xresources
+exec --no-startup-id xrdb ~/.Xresources
+
+#Compton
+exec --no-startup-id compton -b --conf ~/.compton.conf
+
+#Polybar
+exec --no-startup-id polybar -c ~/.polybar/config main_bar
+
+#Kde connect
+exec --no-startup-id /usr/lib/kdeconnectd
+
+#Wal
+exec --no-startup-id wal -q -i ~/Pictures/Wallpaper.* --saturate 0.6
+
+#Mouse
+exec --no-startup-id bash /usr/local/bin/nagastart.sh
+
+#Screen timeout
+exec --no-startup-id xset -dpms
+exec --no-startup-id xset s off
+
+#Key repeat
+exec --no-startup-id xset r rate 250 25
+
+#Ramdisk
+exec --no-startup-id mkdir /dev/shm/$USER
+
+#Polkit
+#exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+
+#Notifications
+exec --no-startup-id /usr/lib/xfce4/notifyd/xfce4-notifyd
+
+#Spotify
+for_window [class="Spotify"] move container to workspace 12
+for_window [title="Spotify"] move container to workspace 12
+for_window [title="Spotify Premium"] move container to workspace 12
+
+#Syncthing
+#exec --no-startup-id /usr/bin/syncthing-gtk -m
+
+#nm-applet
+exec --no-startup-id nm-applet
+
+#Sreen brightness controls
+bindsym XF86MonBrightnessUp exec --no-startup-id light -A 5
+bindsym XF86MonBrightnessDown exec --no-startup-id light -U 5
+
+#Touchpad
+exec --no-startup-id xinput set-button-map "SynPS/2 Synaptics TouchPad" 3 2 1
+exec --no-startup-id xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Disable While Typing Enabled" 0
+
+
+#Rambox
+for_window [class="Rambox"] move container to workspace 11

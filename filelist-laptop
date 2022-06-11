@@ -1,0 +1,14 @@
+.compton.conf
+.drirc
+.i3/*
+.naga/*
+.polybar/*
+.xinitrc
+.Xresources
+Pictures/Wallpaper.png
+Pictures/Wallpaper-lock.png
+.gitconfig
+.config/ranger/*
+.vimrc
+.zprofile
+.zshrc
