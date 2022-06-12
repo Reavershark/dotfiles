@@ -216,7 +216,6 @@ exec --no-startup-id polybar -c ~/.polybar/config main_bar
 exec --no-startup-id redshift -l 51.2093351:3.154725
 
 # Desktop apps
-exec --no-startup-id discord
-#exec --no-startup-id env LD_PRELOAD=/usr/lib/spotify-adblock.so spotify
-exec --no-startup-id /opt/google/chrome/google-chrome --profile-directory=Default --app-id=pjibgclleladliembfgfagdaldikeohf # Spotify
+exec --no-startup-id /usr/lib/systemd/systemd-networkd-wait-online --any && discord
+exec --no-startup-id /usr/lib/systemd/systemd-networkd-wait-online --any && /opt/google/chrome/google-chrome --profile-directory=Default --app-id=pjibgclleladliembfgfagdaldikeohf # Spotify
 
