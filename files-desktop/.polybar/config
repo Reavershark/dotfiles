@@ -33,7 +33,7 @@ font-1 = Source Han Sans JP:style=Normal
 font-2 = Font Awesome 6 Brands:style=Regular
 
 modules-left = i3 xwindow
-modules-right = cpu memory battery-android spotify hash date volume powermenu
+modules-right = cpu memory battery-android mediastatus hash date volume powermenu
 
 tray-position = right
 tray-padding = 9
@@ -154,13 +154,15 @@ menu-3-0-exec = i3lock -i ~/Dotfiles/Wallpaper-lock.png && systemctl suspend &
 menu-4-0 = Hibernate
 menu-4-0-exec = i3lock -i ~/Dotfiles/Wallpaper-lock.png && systemctl hibernate &
 
-[module/spotify]
+[module/mediastatus]
 type = custom/script
-interval = 1
+interval = 0.5
 format-prefix = " "
 format = <label>
-exec = python /usr/share/polybar/scripts/spotify_status.py -p ',[Paused]' -f '{play_pause} {artist} - {song}'
-label-foreground = ${colors.darker}
+exec = rdmd ~/.polybar/mediastatus.d
+label-foreground = ${colors.foreground}
+format-underline = #8080FF80
+background 	=             #60000000
 
 [settings]
 screenchange-reload = true
