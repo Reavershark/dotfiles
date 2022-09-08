@@ -7,46 +7,79 @@ Xft.hinting: 1
 Xft.antialias: 1
 Xft.rgba: rgb
 
-! Colors
-*foreground: #ffffff
-*foreground_bold: #a8a19f
-*background: #1b1918
+! Default Colors
+! *foreground: #ffffff
+! *foreground_bold: #a8a19f
+! *background: #1b1918
+! ! Black + DarkGrey
+! *color0: #1b1918
+! *color8: #686868
+! 
+! ! DarkRed + Red
+! *color1: #ff5c57
+! *color9: #ff5c57
+! 
+! ! DarkGreen + Green
+! *color2: #5af78e
+! *color10: #5af78e
+! 
+! ! DarkYellow + Yellow
+! *color3: #f3f99d
+! *color11: #f3f99d
+! 
+! ! DarkBlue + Blue
+! *color4: #57c7ff
+! *color12: #57c7ff
+! 
+! ! DarkMagenta + Magenta
+! *color5: #ff6ac1
+! *color13: #ff6ac1
+! 
+! ! DarkCyan + Cyan (both not tango)
+! *color6: #9aedfe
+! *color14: #9aedfe
+! 
+! ! LightGrey + White
+! *color7: #eff0eb
+! *color15: #f1f1f0
 
-! Black + DarkGrey
-*color0: #1b1918
-*color8: #686868
-
-! DarkRed + Red
-*color1: #ff5c57
-*color9: #ff5c57
-
-! DarkGreen + Green
-*color2: #5af78e
-*color10: #5af78e
-
-! DarkYellow + Yellow
-*color3: #f3f99d
-*color11: #f3f99d
-
-! DarkBlue + Blue
-*color4: #57c7ff
-*color12: #57c7ff
-
-! DarkMagenta + Magenta
-*color5: #ff6ac1
-*color13: #ff6ac1
-
-! DarkCyan + Cyan (both not tango)
-*color6: #9aedfe
-*color14: #9aedfe
-
-! LightGrey + White
-*color7: #eff0eb
-*color15: #f1f1f0
+! Wal monokai colors
+URxvt.background: [80]#171814
+*.color0: #171814
+*color0:  #171814
+*.color1: #f92672
+*color1:  #f92672
+*.color2: #a6e22e
+*color2:  #a6e22e
+*.color3: #f4bf75
+*color3:  #f4bf75
+*.color4: #66d9ef
+*color4:  #66d9ef
+*.color5: #ae81ff
+*color5:  #ae81ff
+*.color6: #a1efe4
+*color6:  #a1efe4
+*.color7: #f8f8f2
+*color7:  #f8f8f2
+*.color8: #75715e
+*color8:  #75715e
+*.color9: #f92672
+*color9:  #f92672
+*.color10: #a6e22e
+*color10:  #a6e22e
+*.color11: #f4bf75
+*color11:  #f4bf75
+*.color12: #66d9ef
+*color12:  #66d9ef
+*.color13: #ae81ff
+*color13:  #ae81ff
+*.color14: #a1efe5
+*color14:  #a1efe4
+*.color15: #f9f8f5
+*color15:  #f9f8f5
 
 ! rxvt-unicode
 URxvt.intensityStyles: false
-URxvt.background: [80]#000000
 URxvt.depth: 32
 URxvt.font: xft:DejaVu Sans Mono:size=22
 URxvt.letterSpace: -1

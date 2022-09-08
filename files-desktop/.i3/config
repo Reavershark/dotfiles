@@ -11,7 +11,7 @@ font xft:monospace 10
 # Colors
 set_from_resource $fg i3wm.color7
 set_from_resource $bg i3wm.color0
-set_from_resource $focus i3wm.color2
+set_from_resource $focus i3wm.color3
 
 client.focused          $focus  $bg     $fg  $focus    $focus
 client.focused_inactive $bg     $bg     $fg  $bg       $bg

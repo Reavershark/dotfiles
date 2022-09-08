@@ -5,7 +5,6 @@
 .xinitrc
 .Xresources
 Pictures/Wallpaper.*
-Pictures/Wallpaper-lock.png
 .gitconfig
 .config/ranger/*
 .vimrc
