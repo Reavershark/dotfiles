@@ -213,9 +213,8 @@ exec --no-startup-id picom -b --conf ~/.picom.conf
 exec --no-startup-id polybar -c ~/.polybar/config main_bar
 
 # Redshift
-exec --no-startup-id redshift -l 51.2093351:3.154725
+exec --no-startup-id redshift -l 51.2093351:3.154725 -t 6500:4000
 
 # Desktop apps
 exec --no-startup-id /usr/lib/systemd/systemd-networkd-wait-online --any && discord
 exec --no-startup-id /usr/lib/systemd/systemd-networkd-wait-online --any && /opt/google/chrome/google-chrome --profile-directory=Default --app-id=pjibgclleladliembfgfagdaldikeohf # Spotify
-
