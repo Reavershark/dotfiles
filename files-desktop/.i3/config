@@ -108,7 +108,7 @@ bindsym $mod+r scratchpad show; floating disable
 for_window [class="discord"] move container to workspace 11
 #for_window [class="Spotify"] move container to workspace 12
 for_window [title="Spotify"] move container to workspace 12
-for_window [class="Rambox"] move container to workspace 13
+for_window [class="TelegramDesktop"] move container to workspace 13
 
 ## Decoration
 
@@ -218,3 +218,4 @@ exec --no-startup-id redshift -l 51.2093351:3.154725 -t 6500:4000
 # Desktop apps
 exec --no-startup-id /usr/lib/systemd/systemd-networkd-wait-online --any && discord
 exec --no-startup-id /usr/lib/systemd/systemd-networkd-wait-online --any && /opt/google/chrome/google-chrome --profile-directory=Default --app-id=pjibgclleladliembfgfagdaldikeohf # Spotify
+exec --no-startup-id telegram-desktop
