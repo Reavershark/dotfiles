@@ -34,7 +34,7 @@ font-2 = Font Awesome 6 Brands:style=Regular;1
 font-3 = Font Awesome:style=Regular;4
 
 modules-left = i3 xwindow
-modules-right = cpu memory battery-android mediastatus hash date volume powermenu
+modules-right = cpu memory mediastatus hash date volume powermenu
 
 tray-position = right
 tray-padding = 9
@@ -103,12 +103,17 @@ label-foreground = ${colors.darker}
 [module/mediastatus]
 type = custom/script
 interval = 0.5
-format-prefix = " "
 format = <label>
 exec = rdmd ~/.polybar/mediastatus.d
 label-foreground = ${colors.foreground}
 format-underline = #8080FF80
 background = #60000000
+
+[module/hash]
+type = custom/script
+exec = echo '#'
+click-left = sudo systemctl restart systemd-networkd
+click-right = wineserver -kw
 
 [module/date]
 type = internal/date

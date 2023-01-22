@@ -106,7 +106,6 @@ bindsym $mod+r scratchpad show; floating disable
 
 # Auto move
 for_window [class="discord"] move container to workspace 11
-#for_window [class="Spotify"] move container to workspace 12
 for_window [title="Spotify"] move container to workspace 12
 for_window [class="TelegramDesktop"] move container to workspace 13
 
@@ -187,8 +186,9 @@ bindsym $mod+Shift+f exec --no-startup-id dbus-send --session --print-reply=lite
 # Load Xresources
 exec --no-startup-id xrdb ~/.Xresources
 
-# PyWal
-exec --no-startup-id wal -q -t -i ~/Pictures/Wallpaper.* --saturate 0.6
+# Wallpaper
+#exec --no-startup-id wal -q -t -i ~/Pictures/Wallpaper.* --saturate 0.6
+exec --no-startup-id feh --bg-fill ~/Pictures/Wallpaper.*
 
 # XRandR dpi and Freesync
 exec --no-startup-id xrandr --dpi 192
@@ -201,7 +201,10 @@ exec --no-startup-id xrandr --output DisplayPort-0 --set "TearFree" on
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
 # Notifications
-exec --no-startup-id /usr/lib/xfce4/notifyd/xfce4-notifyd
+exec --no-startup-id GDK_SCALE=2 /usr/lib/xfce4/notifyd/xfce4-notifyd
+
+# nm-applet
+#exec --no-startup-id nm-applet
 
 # Mouse macros
 exec --no-startup-id bash /usr/local/bin/nagastart.sh
@@ -210,12 +213,17 @@ exec --no-startup-id bash /usr/local/bin/nagastart.sh
 exec --no-startup-id picom -b --conf ~/.picom.conf
 
 # Polybar
-exec --no-startup-id polybar -c ~/.polybar/config main_bar
+exec --no-startup-id sleep 1 && polybar -c ~/.polybar/config main_bar
 
 # Redshift
 exec --no-startup-id redshift -l 51.2093351:3.154725 -t 6500:4000
 
+# Firefox background tab
+exec --no-startup-id firefox-background
+
 # Desktop apps
-exec --no-startup-id /usr/lib/systemd/systemd-networkd-wait-online --any && discord
-exec --no-startup-id /usr/lib/systemd/systemd-networkd-wait-online --any && /opt/google/chrome/google-chrome --profile-directory=Default --app-id=pjibgclleladliembfgfagdaldikeohf # Spotify
+#exec --no-startup-id /usr/lib/systemd/systemd-networkd-wait-online --any && discord
+exec --no-startup-id discord
+#exec --no-startup-id /usr/lib/systemd/systemd-networkd-wait-online --any && chromium --profile-directory=Default --app-id=pjibgclleladliembfgfagdaldikeohf # Spotify
+exec --no-startup-id chromium --profile-directory=Default --app-id=pjibgclleladliembfgfagdaldikeohf # Spotify
 exec --no-startup-id telegram-desktop
