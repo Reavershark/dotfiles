@@ -53,6 +53,7 @@ URxvt.scrollBar: false
 URxvt.saveLines: 100000
 URxvt.cursorColor: white
 URxvt.perl-ext-common: default,matcher,resize-font,keyboard-select
+!,-confirm-paste
 URxvt.perl-lib: $HOME/.config/Scripts
 URxvt.url-launcher: /usr/bin/xdg-open
 URxvt.matcher.button: 1
