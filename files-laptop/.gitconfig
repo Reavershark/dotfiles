@@ -1,7 +1,7 @@
 [user]
 name = Jonas Meeuws
 email = jonas.meeuws@gmail.com
-signingkey = 79F0669867275DB152C11094D4B4B141C8B475FD
+signingkey = 2AD7DA828FA7B4C53FD0979EBC0C864CF04D9AC4
 [alias]
 lg1 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
 lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
