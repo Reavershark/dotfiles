@@ -168,7 +168,7 @@ exec --no-startup-id xrdb ~/.Xresources
 exec --no-startup-id compton -b --conf ~/.compton.conf
 
 #Polybar
-exec --no-startup-id polybar -c ~/.polybar/config main_bar
+exec --no-startup-id sleep 1.5; polybar -c ~/.polybar/config main_bar
 
 #Kde connect
 exec --no-startup-id /usr/lib/kdeconnectd
@@ -190,7 +190,7 @@ exec --no-startup-id xset r rate 250 25
 exec --no-startup-id mkdir /dev/shm/$USER
 
 #Polkit
-#exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
 #Notifications
 exec --no-startup-id /usr/lib/xfce4/notifyd/xfce4-notifyd
@@ -199,6 +199,7 @@ exec --no-startup-id /usr/lib/xfce4/notifyd/xfce4-notifyd
 for_window [class="Spotify"] move container to workspace 12
 for_window [title="Spotify"] move container to workspace 12
 for_window [title="Spotify Premium"] move container to workspace 12
+for_window [title="Telegram"] move container to workspace 13
 
 #Syncthing
 #exec --no-startup-id /usr/bin/syncthing-gtk -m
@@ -217,3 +218,5 @@ exec --no-startup-id xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Disa
 
 #Rambox
 for_window [class="Rambox"] move container to workspace 11
+
+exec --no-startup-id telegram-desktop
