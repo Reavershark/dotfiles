@@ -71,7 +71,16 @@ alias vv="vim ~/vimwiki/index.wiki"
 alias rcp="rsync --progress --size-only --inplace --recursive --verbose"
 alias weather="curl wttr.in/brugge --silent | head -n37"
 alias wallpaper="wal -i"
-alias proton="STEAM_COMPAT_CLIENT_INSTALL_PATH=$HOME/.steam/steam STEAM_COMPAT_DATA_PATH=/home/jonas/.local/share/Steam/steamapps/compatdata/default/ /home/jonas/.local/share/Steam/steamapps/common/Proton\ 6.3/proton"
+alias proton="STEAM_COMPAT_CLIENT_INSTALL_PATH=$HOME/.steam/steam STEAM_COMPAT_DATA_PATH=/home/jonas/.local/share/Steam/steamapps/compatdata/default/ /home/jonas/.local/share/Steam/steamapps/common/Proton\ 7.0/proton"
+
+alias reloadbar="killall polybar; polybar main_bar -c .polybar/config & disown %"
+
+alias d="docker"
+alias dc="docker compose"
+
+alias k="kubectl"
+alias ka="kubectl apply -f"
+alias kd="kubectl delete -f"
 
 # Functions
 
@@ -83,4 +92,22 @@ function loop() {
 
 function vnc() {
     zsh -c "export DISPLAY=:1 && Xvfb :1 -screen 0 1920x1080x16 & (x11vnc -passwd walrus -q && killall -9 Xvfb) & $1" &>/dev/null & disown %zsh
+}
+
+function pf-local-allint {
+    if [ ! $# -eq 2 ]; then
+        echo 'Usage: pf-local-allint listen_port target_port'
+        return 1
+    fi
+    echo "Forwarding 0.0.0.0:${1} to 127.0.0.1:${2}..."
+    sudo socat "tcp-listen:${1},fork" "tcp:127.0.0.1:${2}"
+}
+
+function pf-local-temp.jnms.me {
+    if [ ! $# -eq 1 ]; then
+        echo 'Usage: pf-local-temp.jnms.me target_port'
+        return 1
+    fi
+    echo "Forwarding https://temp.jnms.me to 127.0.0.1:${1}..."
+    ssh -R 0.0.0.0:8000:127.0.0.1:${1} jnms.me "echo 'Connected, leave this running' && sleep inf"
 }
