@@ -153,7 +153,6 @@ bindsym XF86AudioStop exec --no-startup-id playerctl pause
 bindsym XF86AudioNext exec --no-startup-id playerctl next
 bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 
-
 # Pause/unpause focused window (SIGSTOP/SIGCONT)
 bindsym Pause exec --no-startup-id ~/.i3/pause.sh
 
@@ -165,8 +164,8 @@ bindsym $mod+Shift+e exec --no-startup-id "i3-nagbar -t warning -m 'Confirm exit
 
 ## One-shot programs
 
-# Ramdisk
-exec --no-startup-id mkdir /dev/shm/$USER
+# Keyboard layout
+exec --no-startup-id setxkbmap be -option "ctrl:nocaps"
 
 # Numlock on startup
 exec --no-startup-id "numlockx on"
@@ -179,6 +178,8 @@ exec --no-startup-id xset s off
 exec --no-startup-id xset r rate 250 25
 
 # Mouse dpi
+exec --no-startup-id xinput --set-prop 'pointer:Razer Razer Naga Chroma' 'libinput Accel Speed' -.4
+
 set $mousedpi 2800
 exec --no-startup-id dbus-send --session --print-reply=literal --dest="org.razer" /org/razer/device/PM1724H00902066 razer.device.dpi.setDPI uint16:$mousedpi uint16:$mousedpi
 bindsym $mod+Shift+f exec --no-startup-id dbus-send --session --print-reply=literal --dest="org.razer" /org/razer/device/PM1724H00902066 razer.device.dpi.setDPI uint16:$mousedpi uint16:$mousedpi
@@ -188,12 +189,11 @@ exec --no-startup-id xrdb ~/.Xresources
 
 # Wallpaper
 #exec --no-startup-id wal -q -t -i ~/Pictures/Wallpaper.* --saturate 0.6
-exec --no-startup-id feh --bg-fill ~/Pictures/Wallpaper.*
+exec --no-startup-id feh --no-fehbg --bg-fill ~/Pictures/Wallpaper.*
 
 # XRandR dpi and Freesync
 exec --no-startup-id xrandr --dpi 192
-exec --no-startup-id xrandr --output DisplayPort-0 --set "TearFree" on
-
+exec --no-startup-id xrandr --output DP-1 --set "TearFree" on
 
 ## Autostart
 
@@ -222,8 +222,6 @@ exec --no-startup-id redshift -l 51.2093351:3.154725 -t 6500:4000
 exec --no-startup-id firefox-background
 
 # Desktop apps
-#exec --no-startup-id /usr/lib/systemd/systemd-networkd-wait-online --any && discord
 exec --no-startup-id discord
-#exec --no-startup-id /usr/lib/systemd/systemd-networkd-wait-online --any && chromium --profile-directory=Default --app-id=pjibgclleladliembfgfagdaldikeohf # Spotify
-exec --no-startup-id chromium --profile-directory=Default --app-id=pjibgclleladliembfgfagdaldikeohf # Spotify
+exec --no-startup-id /usr/bin/firefoxpwa site launch 01GQF3DMVKB87QDXTM9G9XHNM9 --protocol # spotify
 exec --no-startup-id telegram-desktop
