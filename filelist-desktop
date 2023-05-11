@@ -10,3 +10,4 @@ Pictures/Wallpaper.*
 .vimrc
 .zprofile
 .zshrc
+.config/rofi/*
