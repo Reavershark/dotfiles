@@ -1,0 +1,8 @@
+configuration {
+  modi: "drun,run,ssh";
+  font: "Monospace Regular 12";
+  lines: 18;
+  dpi: 192;
+  drun-icon-theme: "Paper";
+  sidebar-mode: true;
+}
