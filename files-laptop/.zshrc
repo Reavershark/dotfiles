@@ -56,6 +56,9 @@ compinit
 # Preferred editor
 export EDITOR='vim'
 
+# Supress wine warnings
+WINEDEBUG="fixme-all"
+
 #Hide '%'
 #unsetopt PROMPT_SP
 
@@ -69,14 +72,17 @@ alias l="ls -lAh"
 alias v="vim"
 alias vv="vim ~/vimwiki/index.wiki"
 alias rcp="rsync --progress --size-only --inplace --recursive --verbose"
-alias weather="curl wttr.in/brugge --silent | head -n37"
-alias wallpaper="wal -i"
-alias proton="STEAM_COMPAT_CLIENT_INSTALL_PATH=$HOME/.steam/steam STEAM_COMPAT_DATA_PATH=/home/jonas/.local/share/Steam/steamapps/compatdata/default/ /home/jonas/.local/share/Steam/steamapps/common/Proton\ 7.0/proton"
+alias nohist="export HISTFILE=/dev/null"
 
 alias reloadbar="killall polybar; polybar main_bar -c .polybar/config & disown %"
+alias weather="curl wttr.in/brugge --silent | head -n37"
+
+alias drepl="docker run --rm -it dlanguage/drepl"
 
 alias d="docker"
 alias dc="docker compose"
+alias dockerimgtree="docker run -it --privileged --rm -v /var/run/docker.sock:/var/run/docker.sock nate/dockviz images --dot | dot -Tpng | feh -"
+alias run-qemu-user-static="docker run --rm --privileged multiarch/qemu-user-static --reset -p yes"
 
 alias k="kubectl"
 alias ka="kubectl apply -f"
@@ -84,13 +90,13 @@ alias kd="kubectl delete -f"
 
 # Functions
 
-function loop() {
+function loop {
     while true; do
         $@
     done
 }
 
-function vnc() {
+function vnc {
     zsh -c "export DISPLAY=:1 && Xvfb :1 -screen 0 1920x1080x16 & (x11vnc -passwd walrus -q && killall -9 Xvfb) & $1" &>/dev/null & disown %zsh
 }
 
