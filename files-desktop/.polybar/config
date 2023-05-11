@@ -9,7 +9,7 @@ full 		= ${xrdb:color7}
 discharging 	= ${xrdb:color7}
 
 [bar/main_bar]
-monitor = ${env:MONITOR:DisplayPort-0}
+monitor = ${env:MONITOR:DP-1}
 dpi = -1
 bottom = false
 width = 100%
@@ -28,7 +28,7 @@ line-color = ${colors.foreground}
 module-margin-left = 0
 module-margin-right = 2
 
-font-0 = sans
+font-0 = OpenSans
 font-1 = Source Han Sans JP:style=Normal
 font-2 = Font Awesome 6 Brands:style=Regular;1
 font-3 = Font Awesome:style=Regular;4
