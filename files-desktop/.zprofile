@@ -6,8 +6,6 @@ export TERMINAL=urxvt
 export QT_AUTO_SCREEN_SCALE_FACTOR=1
 export OCL_ICD_VENDORS=mesa
 
-export DC=ldc2
-
 if [ ! -e /tmp/.zshfirststart ] && [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ]; then
   mkdir /dev/shm/$USER
   touch /tmp/.zshfirststart
