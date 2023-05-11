@@ -67,6 +67,9 @@ WINEDEBUG="fixme-all"
 #Hide '%'
 #unsetopt PROMPT_SP
 
+# Dlang
+export DC=ldc2
+
 # Alias
 alias pss="yay -Ss"
 alias pqs="yay -Qs"
@@ -80,9 +83,17 @@ alias rcp="rsync --progress --size-only --inplace --recursive --verbose"
 alias drepl="dub run drepl -q"
 alias weather="curl wttr.in/brugge --silent | head -n37"
 alias wallpaper="wal -i"
-alias proton="STEAM_COMPAT_DATA_PATH=/home/jonas/Games/Steam/steamapps/compatdata/default/ /home/jonas/.steam/steam/compatibilitytools.d/Proton-*-GE*/proton"
+#alias proton="STEAM_COMPAT_DATA_PATH=/home/jonas/Games/Steam/steamapps/compatdata/default/ /home/jonas/.steam/steam/compatibilitytools.d/Proton-*-GE*/proton"
 alias drepl="docker run --rm -it dlanguage/drepl"
 alias nohist="export HISTFILE=/dev/null"
+alias oldhist="less /home/jonas/_oldinstall/home/jonas/.histfile"
+alias dockerimgtree="docker run -it --privileged --rm -v /var/run/docker.sock:/var/run/docker.sock nate/dockviz images --dot | dot -Tpng | feh -"
+
+alias k="kubectl"
+alias ka="kubectl apply -f"
+alias kd="kubectl delete -f"
+
+alias dc="docker compose"
 
 # Functions
 
