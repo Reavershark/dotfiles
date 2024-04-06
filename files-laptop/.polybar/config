@@ -33,14 +33,7 @@ font-2 = Font Awesome 6 Brands:style=Regular;1
 font-3 = Font Awesome:style=Regular;2
 
 modules-left = i3 xwindow
-modules-right = cpu memory hash date battery volume powermenu
-
-tray-position = right
-tray-padding = 9
-tray-offset-y = 0%
-tray-offset-x = 0%
-tray-maxsize = 100
-tray-detached = false
+modules-right = cpu memory hash date battery volume powermenu tray
 
 wm-restack = i3
 
@@ -153,6 +146,11 @@ menu-0-1-exec = shutdown 0 &
 menu-0-2-exec = systemctl suspend &
 menu-0-3-exec = systemctl hibernate &
 
+[module/tray]
+type = internal/tray
+format-suffix = " "
+tray-spacing = 6px
+tray-size = 100px
 
 [settings]
 screenchange-reload = true
